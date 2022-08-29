@@ -42,8 +42,23 @@ class RegistrationApiController extends Controller
 
     public function getStudent($student_id)
     {
-        $student = Student::where('student_id', $student_id)->get();
-        return response()->json($student);
+        $student = Student::where('student_id', $student_id)->first();
+        $registration = Registration::where('student_id', $student->id)->first();
+        return response()->json(
+            [
+                            // "id": 1,
+                            "student_id" => $student->student_id,
+                            "department" => $student->department->name,
+                            "faculty" => $student->faculty->name,
+                            "names" => $student->names,
+                            "phone" => $student->phone,
+                            "email" => $student->email,
+                            "address" => $student->address,
+                            "program" => $registration->program ?? null,
+                            "semester" => $registration->semester ?? null,
+                            "farg" => $student->farg
+            ]
+        );
     }
 
     public function getStudentFaculty($student_id)

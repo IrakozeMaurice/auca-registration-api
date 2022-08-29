@@ -29,7 +29,20 @@ class ClearanceSeeder extends Seeder
                 'completion' => rand(0, 1),
                 'gown' => rand(0, 1),
                 'diploma' => rand(0, 1),
+                'cleared' => false,
             ]);
+        }
+        
+        $clearances = Clearance::all();
+        foreach ($clearances as $clearance) {
+            if ($clearance->general >= 32 && $clearance->major >= 108 && $clearance->books == 0 && 
+                $clearance->dean && $clearance->it && $clearance->student_services && 
+                $clearance->business && $clearance->secondary && $clearance->transcript && 
+                $clearance->completion && $clearance->gown && $clearance->diploma){
+                
+                $clearance->cleared = true;
+                $clearance->update();
+            }
         }
     }
 }
