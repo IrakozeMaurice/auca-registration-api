@@ -14,6 +14,11 @@ class Student extends Model
         return $this->hasMany(Registration::class);
     }
 
+    public function program()
+    {
+        return $this->belongsTo(Program::class);
+    }
+
     public function department()
     {
         return $this->belongsTo(Department::class);

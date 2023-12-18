@@ -10,12 +10,15 @@ class CreateCourseRegistrationTable extends Migration
     public function up()
     {
         Schema::create('course_registration', function (Blueprint $table) {
-            $table->bigIncrements('id');
+
+            $table->primary(['course_id', 'registration_id']);
 
             $table->unsignedBigInteger('course_id');
-            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
-
             $table->unsignedBigInteger('registration_id');
+
+            $table->enum('group', ['A', 'E']);
+
+            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
             $table->foreign('registration_id')->references('id')->on('registrations')->onDelete('cascade');
 
             $table->timestamps();

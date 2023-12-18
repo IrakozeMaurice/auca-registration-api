@@ -18,4 +18,11 @@ class Course extends Model
     {
         return $this->belongsToMany(Department::class);
     }
+
+    public function teachers()
+    {
+        return $this->belongsToMany(Teacher::class);
+    }
+
+    protected $hidden = ['id', 'created_at', 'updated_at'];
 }

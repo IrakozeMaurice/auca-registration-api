@@ -11,33 +11,33 @@ class DepartmentSeeder extends Seeder
     {
         //Information Technology
         Department::create([
-            'faculty_id' => Faculty::find(1)->id,
+            'faculty_id' => Faculty::where('name', 'Information Technology')->first()->id,
             'name' => 'Information Management'
         ]);
         Department::create([
-            'faculty_id' => Faculty::find(1)->id,
+            'faculty_id' => Faculty::where('name', 'Information Technology')->first()->id,
             'name' => 'Network and Communication Systems'
         ]);
         Department::create([
-            'faculty_id' => Faculty::find(1)->id,
+            'faculty_id' => Faculty::where('name', 'Information Technology')->first()->id,
             'name' => 'Software Engineering'
         ]);
 
         //Business Administration
         Department::create([
-            'faculty_id' => Faculty::find(2)->id,
+            'faculty_id' => Faculty::where('name', 'Business Administration')->first()->id,
             'name' => 'Management'
         ]);
         Department::create([
-            'faculty_id' => Faculty::find(2)->id,
+            'faculty_id' => Faculty::where('name', 'Business Administration')->first()->id,
             'name' => 'Marketing'
         ]);
         Department::create([
-            'faculty_id' => Faculty::find(2)->id,
+            'faculty_id' => Faculty::where('name', 'Business Administration')->first()->id,
             'name' => 'Finance'
         ]);
         Department::create([
-            'faculty_id' => Faculty::find(2)->id,
+            'faculty_id' => Faculty::where('name', 'Business Administration')->first()->id,
             'name' => 'Accounting'
         ]);
 

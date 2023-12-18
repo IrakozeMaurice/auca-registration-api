@@ -29,6 +29,7 @@ class CreateClearancesTable extends Migration
             $table->boolean('completion');
             $table->boolean('gown');
             $table->boolean('diploma');
+            $table->boolean('cleared');
             $table->timestamps();
         });
     }

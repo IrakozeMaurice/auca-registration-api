@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddColumnToStudentsTable extends Migration
+class CreateProgramsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,13 @@ class AddColumnToStudentsTable extends Migration
      */
     public function up()
     {
-        Schema::table('students', function (Blueprint $table) {
-            $table->boolean('farg')->default(0);
+        Schema::create('programs', function (Blueprint $table) {
+
+            $table->bigIncrements('id');
+
+            $table->enum('name', ['DAY', 'EVENING']);
+
+            $table->timestamps();
         });
     }
 
@@ -25,8 +30,6 @@ class AddColumnToStudentsTable extends Migration
      */
     public function down()
     {
-        Schema::table('students', function (Blueprint $table) {
-            $table->dropColumn('farg');
-        });
+        Schema::dropIfExists('programs');
     }
 }

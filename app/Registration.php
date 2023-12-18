@@ -15,13 +15,20 @@ class Registration extends Model
         return $this->belongsTo(Student::class);
     }
 
+    public function semester()
+    {
+        return $this->belongsTo(Semester::class);
+    }
+
     public function courses()
     {
-        return $this->belongsToMany(Course::class);
+        return $this->belongsToMany(Course::class)
+            ->withTimestamps()
+            ->withPivot(['group']);
     }
 
     public function getRegistrationYear()
     {
-    	return Carbon::createFromFormat('m/d/Y', $this->created_at);
+        return Carbon::createFromFormat('m/d/Y', $this->created_at);
     }
 }

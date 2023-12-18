@@ -10,11 +10,15 @@ class CreateRegistrationsTable extends Migration
     public function up()
     {
         Schema::create('registrations', function (Blueprint $table) {
+
             $table->bigIncrements('id');
+
             $table->unsignedBigInteger('student_id');
-            $table->string('program');
-            $table->string('semester');
+            $table->unsignedBigInteger('semester_id');
+
             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
+            $table->foreign('semester_id')->references('id')->on('semesters')->onDelete('cascade');
+
             $table->timestamps();
         });
     }
